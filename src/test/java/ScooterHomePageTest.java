@@ -1,5 +1,4 @@
 import org.example.pageObject.ScooterHomePage;
-import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -44,7 +43,7 @@ public class ScooterHomePageTest {
     }
 
     @Test
-    public void questionBlockCheck() {
+    public void questionBlockCheckTest() {
         ScooterHomePage objScooterHomePage = new ScooterHomePage(driver);
 
         objScooterHomePage.clickCookieButton();
