@@ -46,7 +46,7 @@ public class ScooterOrderPageTest {
     public void firstStep() {
         this.driver = new ChromeDriver();
 //        this.driver = new FirefoxDriver();
-        this.driver.get("https://qa-scooter.praktikum-services.ru/");
+        this.driver.get(ScooterHomePage.HOME_PAGE_URL);
     }
 
     @Test

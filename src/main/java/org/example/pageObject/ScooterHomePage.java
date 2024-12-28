@@ -9,6 +9,9 @@ public class ScooterHomePage {
 
     private WebDriver driver;
 
+    // URL домашней страницы "Яндекс Самокат"
+    public static final String HOME_PAGE_URL = "https://qa-scooter.praktikum-services.ru/";
+
     // Кнопка "Заказать" в шапке страницы
     private By headerOrderButton = By.xpath(".//div[@class='Header_Nav__AGCXC']/button[text()='Заказать']");
 
