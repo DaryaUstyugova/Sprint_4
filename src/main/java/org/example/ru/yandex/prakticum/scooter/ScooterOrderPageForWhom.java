@@ -1,4 +1,4 @@
-package org.example.pageObject;
+package org.example.ru.yandex.prakticum.scooter;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,28 +9,28 @@ import java.time.Duration;
 
 public class ScooterOrderPageForWhom {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     // Форма заказа
-    private By orderForm = By.className("Order_Content__bmtHS");
+    private final By orderForm = By.className("Order_Content__bmtHS");
 
     // Поле "Имя"
-    private By nameField = By.xpath(".//input[@placeholder='* Имя']");
+    private final By nameField = By.xpath(".//input[@placeholder='* Имя']");
 
     // Поле "Фамилия"
-    private By surnameField = By.xpath(".//input[@placeholder='* Фамилия']");
+    private final By surnameField = By.xpath(".//input[@placeholder='* Фамилия']");
 
     // Поле "Адрес"
-    private By AddressField = By.xpath(".//input[@placeholder='* Адрес: куда привезти заказ']");
+    private final By AddressField = By.xpath(".//input[@placeholder='* Адрес: куда привезти заказ']");
 
     // Поле с выпадающим списком "Метро"
-    private By metroStationField = By.className("select-search__input");
+    private final By metroStationField = By.className("select-search__input");
 
     // Поле "Телефон"
-    private By phoneNumberField = By.xpath(".//input[@placeholder='* Телефон: на него позвонит курьер']");
+    private final By phoneNumberField = By.xpath(".//input[@placeholder='* Телефон: на него позвонит курьер']");
 
     // Кнопка "Далее"
-    private By nextButton = By.className("Button_Middle__1CSJM");
+    private final By nextButton = By.className("Button_Middle__1CSJM");
 
     public ScooterOrderPageForWhom(WebDriver driver) {
         this.driver = driver;
@@ -60,7 +60,7 @@ public class ScooterOrderPageForWhom {
     // Метод выбора станции метро в выпадающем списке
     public void clickToMetroStationField(String metro) {
         driver.findElement(metroStationField).click();
-        driver.findElement(By.xpath(".//div[text()='"+metro+"']")).click();
+        driver.findElement(By.xpath(".//div[text()='" + metro + "']")).click();
     }
 
     // Метод заполнения поля "Телефон"

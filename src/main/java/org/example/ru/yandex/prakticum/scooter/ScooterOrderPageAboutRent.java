@@ -1,4 +1,4 @@
-package org.example.pageObject;
+package org.example.ru.yandex.prakticum.scooter;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,31 +9,31 @@ import java.time.Duration;
 
 public class ScooterOrderPageAboutRent {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     // Форма заказа "Про Аренду"
-    private By orderFormRent = By.className("Order_Content__bmtHS");
+    private final By orderFormRent = By.className("Order_Content__bmtHS");
 
     // Поле "Дата"
-    private By dateField = By.xpath(".//input[@placeholder='* Когда привезти самокат']");
+    private final By dateField = By.xpath(".//input[@placeholder='* Когда привезти самокат']");
 
     // Селектор с выбором даты
-    private By dateSelected = By.className("react-datepicker__day--selected");
+    private final By dateSelected = By.className("react-datepicker__day--selected");
 
     // Поле "Срок Аренды"
-    private By rentalPeriod = By.className("Dropdown-control");
+    private final By rentalPeriod = By.className("Dropdown-control");
 
     // Поле "Комментарий"
-    private By commentToTheCourier = By.xpath(".//input[@placeholder='Комментарий для курьера']");
+    private final By commentToTheCourier = By.xpath(".//input[@placeholder='Комментарий для курьера']");
 
     // Кнопка "Заказать" в теле страницы
-    private By orderConfirmationButton = By.xpath(".//div[@class='Order_Buttons__1xGrp']/button[text()='Заказать']");
+    private final By orderConfirmationButton = By.xpath(".//div[@class='Order_Buttons__1xGrp']/button[text()='Заказать']");
 
     // Кнопка "Да" в окне подтверждения заказа
-    private By yesButton = By.xpath(".//button[text()='Да']");
+    private final By yesButton = By.xpath(".//button[text()='Да']");
 
     // Окно с информацией о созданном заказе
-    private By orderConfirmWindow = By.className("Order_ModalHeader__3FDaJ");
+    private final By orderConfirmWindow = By.className("Order_ModalHeader__3FDaJ");
 
     public ScooterOrderPageAboutRent(WebDriver driver) {
         this.driver = driver;
@@ -54,12 +54,12 @@ public class ScooterOrderPageAboutRent {
     // Метод заполнения поля "Срок аренды"
     public void chooseRentalPeriod(String rent) {
         driver.findElement(rentalPeriod).click();
-        driver.findElement(By.xpath(".//div[text()='"+rent+"']")).click();
+        driver.findElement(By.xpath(".//div[text()='" + rent + "']")).click();
     }
 
     // Метод выбора цвета самоката
     public void chooseColour(String colour) {
-        driver.findElement(By.xpath(".//label[text()='"+colour+"']")).click();
+        driver.findElement(By.xpath(".//label[text()='" + colour + "']")).click();
     }
 
     // Метод заполнения поля "Комментарий"

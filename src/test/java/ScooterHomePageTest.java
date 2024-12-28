@@ -1,4 +1,4 @@
-import org.example.pageObject.ScooterHomePage;
+import org.example.ru.yandex.prakticum.scooter.ScooterHomePage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -6,24 +6,24 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class ScooterHomePageTest {
 
-    private WebDriver driver;
-
     private final int questionNumber;
     private final String answerText;
+    private WebDriver driver;
 
     public ScooterHomePageTest(int questionNumber, String answerText) {
         this.questionNumber = questionNumber;
         this.answerText = answerText;
     }
 
-    @Parameterized.Parameters (name = "Проверка раскрывающегося списка 'Вопросы о важном'")
+    @Parameterized.Parameters(name = "Проверка раскрывающегося списка 'Вопросы о важном'")
     public static Object[][] answers() {
-        return new Object[][] {
+        return new Object[][]{
                 {0, "Сутки — 400 рублей. Оплата курьеру — наличными или картой."},
                 {1, "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим."},
                 {2, "Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30."},

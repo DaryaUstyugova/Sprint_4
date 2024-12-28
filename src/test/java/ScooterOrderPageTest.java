@@ -1,6 +1,6 @@
-import org.example.pageObject.ScooterHomePage;
-import org.example.pageObject.ScooterOrderPageAboutRent;
-import org.example.pageObject.ScooterOrderPageForWhom;
+import org.example.ru.yandex.prakticum.scooter.ScooterHomePage;
+import org.example.ru.yandex.prakticum.scooter.ScooterOrderPageAboutRent;
+import org.example.ru.yandex.prakticum.scooter.ScooterOrderPageForWhom;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Before;
@@ -10,17 +10,14 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-
 import static org.hamcrest.CoreMatchers.containsString;
 
 @RunWith(Parameterized.class)
 public class ScooterOrderPageTest {
 
-    private WebDriver driver;
-
     private final String orderConfirmMessage = "Заказ оформлен";
-
     private final String name, surname, address, metro, phone, date, rent, colour, comment;
+    private WebDriver driver;
 
     public ScooterOrderPageTest(String name, String surname, String address, String metro, String phone, String date, String rent, String colour, String comment) {
         this.name = name;
@@ -69,16 +66,16 @@ public class ScooterOrderPageTest {
     public void createOrderWithMiddleOrderButtonTest() {
 
 
-       ScooterHomePage objScooterHomePage = new ScooterHomePage(driver);
-       ScooterOrderPageForWhom objScooterOrderPageForWhom = new ScooterOrderPageForWhom(driver);
-       ScooterOrderPageAboutRent objScooterOrderPageAboutRent = new ScooterOrderPageAboutRent(driver);
+        ScooterHomePage objScooterHomePage = new ScooterHomePage(driver);
+        ScooterOrderPageForWhom objScooterOrderPageForWhom = new ScooterOrderPageForWhom(driver);
+        ScooterOrderPageAboutRent objScooterOrderPageAboutRent = new ScooterOrderPageAboutRent(driver);
 
-       objScooterHomePage.clickCookieButton();
-       objScooterHomePage.clickOrderButtonMiddle();
-       objScooterOrderPageForWhom.waitForLoadOrderPage();
-       orderPage(objScooterOrderPageForWhom, objScooterOrderPageAboutRent);
+        objScooterHomePage.clickCookieButton();
+        objScooterHomePage.clickOrderButtonMiddle();
+        objScooterOrderPageForWhom.waitForLoadOrderPage();
+        orderPage(objScooterOrderPageForWhom, objScooterOrderPageAboutRent);
 
-       MatcherAssert.assertThat("Заказ не оформлен", objScooterOrderPageAboutRent.getOrderConfirm(), containsString(this.orderConfirmMessage));
+        MatcherAssert.assertThat("Заказ не оформлен", objScooterOrderPageAboutRent.getOrderConfirm(), containsString(this.orderConfirmMessage));
 
     }
 
@@ -89,19 +86,19 @@ public class ScooterOrderPageTest {
 
 
     private void orderPage(ScooterOrderPageForWhom objScooterOrderPageForWhom, ScooterOrderPageAboutRent objScooterOrderPageAboutRent) {
-       objScooterOrderPageForWhom.sendToNameField(this.name);
-       objScooterOrderPageForWhom.sendToSurnameField(this.surname);
-       objScooterOrderPageForWhom.sendToAddressField(this.address);
-       objScooterOrderPageForWhom.clickToMetroStationField(this.metro);
-       objScooterOrderPageForWhom.sendToPhoneNumberField(this.phone);
-       objScooterOrderPageForWhom.clickToNextButton();
-       objScooterOrderPageAboutRent.waitForLoadOrderRentPage();
-       objScooterOrderPageAboutRent.inputDate(this.date);
-       objScooterOrderPageAboutRent.chooseRentalPeriod(this.rent);
-       objScooterOrderPageAboutRent.chooseColour(this.colour);
-       objScooterOrderPageAboutRent.inputComment(this.comment);
-       objScooterOrderPageAboutRent.clickToOrderConfirmationButton();
-       objScooterOrderPageAboutRent.clickYesButton();
+        objScooterOrderPageForWhom.sendToNameField(this.name);
+        objScooterOrderPageForWhom.sendToSurnameField(this.surname);
+        objScooterOrderPageForWhom.sendToAddressField(this.address);
+        objScooterOrderPageForWhom.clickToMetroStationField(this.metro);
+        objScooterOrderPageForWhom.sendToPhoneNumberField(this.phone);
+        objScooterOrderPageForWhom.clickToNextButton();
+        objScooterOrderPageAboutRent.waitForLoadOrderRentPage();
+        objScooterOrderPageAboutRent.inputDate(this.date);
+        objScooterOrderPageAboutRent.chooseRentalPeriod(this.rent);
+        objScooterOrderPageAboutRent.chooseColour(this.colour);
+        objScooterOrderPageAboutRent.inputComment(this.comment);
+        objScooterOrderPageAboutRent.clickToOrderConfirmationButton();
+        objScooterOrderPageAboutRent.clickYesButton();
     }
 
 }

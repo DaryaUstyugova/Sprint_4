@@ -1,4 +1,4 @@
-package org.example.pageObject;
+package org.example.ru.yandex.prakticum.scooter;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -7,25 +7,23 @@ import org.openqa.selenium.WebElement;
 
 public class ScooterHomePage {
 
-    private WebDriver driver;
-
     // URL домашней страницы "Яндекс Самокат"
     public static final String HOME_PAGE_URL = "https://qa-scooter.praktikum-services.ru/";
-
+    private final WebDriver driver;
     // Кнопка "Заказать" в шапке страницы
-    private By headerOrderButton = By.xpath(".//div[@class='Header_Nav__AGCXC']/button[text()='Заказать']");
+    private final By headerOrderButton = By.xpath(".//div[@class='Header_Nav__AGCXC']/button[text()='Заказать']");
 
     // Кнопка "Заказать" в теле страницы
-    private By middleOrderButton = By.className("Button_Middle__1CSJM");
+    private final By middleOrderButton = By.className("Button_Middle__1CSJM");
 
     // Раскрывающийся список "Вопросы о важном"
-    private By importantQuestionsBlock = By.className("accordion__heading");
+    private final By importantQuestionsBlock = By.className("accordion__heading");
 
     // Ответы на вопросы в раскрывающемся списке "Вопросы о важном"
-    private By answer = By.xpath(".//div[@class='accordion__panel']/p");
+    private final By answer = By.xpath(".//div[@class='accordion__panel']/p");
 
     // Кнопка принятия Cookie
-    private By agreeCookie = By.className("App_CookieButton__3cvqF");
+    private final By agreeCookie = By.className("App_CookieButton__3cvqF");
 
     public ScooterHomePage(WebDriver driver) {
         this.driver = driver;
@@ -44,14 +42,14 @@ public class ScooterHomePage {
     //Метод для нажатия на кнопку "Заказать" в теле страницы, включая прокрутку до элемента
     public void clickOrderButtonMiddle() {
         WebElement middleButton = driver.findElement(middleOrderButton);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", middleButton);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", middleButton);
         driver.findElement(middleOrderButton).click();
     }
 
     // Метод для прокрутки страницы к блоку "Вопросы о важном"
     public void scrollToQuestionBlock() {
         WebElement questionBlock = driver.findElement(By.className("Home_FourPart__1uthg"));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", questionBlock);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", questionBlock);
     }
 
     // Метод для раскрытия элементов списка
