@@ -2,10 +2,12 @@ package org.example.ru.yandex.prakticum.scooter;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class ScooterOrderPageForWhom {
 
@@ -25,6 +27,9 @@ public class ScooterOrderPageForWhom {
 
     // Поле с выпадающим списком "Метро"
     private final By metroStationField = By.className("select-search__input");
+
+    // Выпадающий список поля "Метро
+    private final By metroSelector = By.className("select-search__select");
 
     // Поле "Телефон"
     private final By phoneNumberField = By.xpath(".//input[@placeholder='* Телефон: на него позвонит курьер']");
@@ -59,8 +64,15 @@ public class ScooterOrderPageForWhom {
 
     // Метод выбора станции метро в выпадающем списке
     public void clickToMetroStationField(String metro) {
-        driver.findElement(metroStationField).click();
-        driver.findElement(By.xpath(".//div[text()='" + metro + "']")).click();
+        driver.findElement(metroStationField).sendKeys(metro);
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.visibilityOf(driver.findElement(metroSelector)));
+        List<WebElement> choice = driver.findElements(metroSelector);
+        for (WebElement element : choice) {
+            if (element.getText().equals(metro)) {
+                element.click();
+            }
+        }
     }
 
     // Метод заполнения поля "Телефон"

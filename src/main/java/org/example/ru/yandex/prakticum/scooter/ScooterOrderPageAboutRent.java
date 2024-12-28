@@ -2,10 +2,12 @@ package org.example.ru.yandex.prakticum.scooter;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class ScooterOrderPageAboutRent {
 
@@ -21,7 +23,13 @@ public class ScooterOrderPageAboutRent {
     private final By dateSelected = By.className("react-datepicker__day--selected");
 
     // Поле "Срок Аренды"
-    private final By rentalPeriod = By.className("Dropdown-control");
+    private final By rentalPeriod = By.className("Dropdown-root");
+
+    // Выпадающее меню "Срок аренды"
+    private final By rentalPeriodMenu = By.className("Dropdown-option");
+
+    // Выбор цвета самоката
+    private final By scooterColour = By.className("Checkbox_Label__3wxSf");
 
     // Поле "Комментарий"
     private final By commentToTheCourier = By.xpath(".//input[@placeholder='Комментарий для курьера']");
@@ -54,12 +62,24 @@ public class ScooterOrderPageAboutRent {
     // Метод заполнения поля "Срок аренды"
     public void chooseRentalPeriod(String rent) {
         driver.findElement(rentalPeriod).click();
-        driver.findElement(By.xpath(".//div[text()='" + rent + "']")).click();
+        List<WebElement> choice = driver.findElements(rentalPeriodMenu);
+        for (WebElement element : choice) {
+            if (element.getText().equals(rent)) {
+                element.click();
+                break;
+            }
+        }
+
     }
 
     // Метод выбора цвета самоката
     public void chooseColour(String colour) {
-        driver.findElement(By.xpath(".//label[text()='" + colour + "']")).click();
+        List<WebElement> choice = driver.findElements(scooterColour);
+        for (WebElement element : choice) {
+            if (element.getText().equals(colour)) {
+                element.click();
+            }
+        }
     }
 
     // Метод заполнения поля "Комментарий"
